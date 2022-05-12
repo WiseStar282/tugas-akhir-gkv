@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> contoh plot line chart </title>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        
+    </head>
+<body>
+    <div id="barplot"></div>
+    <div id="pieplot"></div>
+    <script>
+        //elemen div dengan id test, container elemen html
+        BAR = document.getElementById('barplot');
+        //data pada plot untuk absis-x dan ordinat-y
+        var data = [{
+            x: ['isti', 'itu', 'asu', 'babi','ikan','babi'],
+            y: [0, 10, 20, 30, 40, 50],
+            type: 'bar', orientation: 'v', showlegend:true
+        }];
+        //hash config untuk tambahan pengaturan chart
+        //jika responsive true maka chart akan merespon langsung nilai yang dimasukkan
+        //method untuk memanggil fungsi plot
+        
+        PIE =  document.getElementById('pieplot');
+        var data1 = [{
+            labels: ['isti','babi','ikan','babi'],
+            y: [10, 20, 30, 40],
+            type:'pie'
+        }];
+        
+        var layout1 = {font : {size: 18}, height:400, width:500};
+        var layout = {font : {size: 18}};
+        var config =  { responsive: true};
+        Plotly.newPlot(PIE, data1, layout1, config);
+        Plotly.newPlot(BAR, data, layout, config);
+
+    </script>
+    
+</body>
+</html>
