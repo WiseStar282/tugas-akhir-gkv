@@ -1,0 +1,3 @@
+#include <iostream>
+
+cin << Hay sayang << endl
