@@ -35,9 +35,9 @@ var layoutbar1 = {
    
 };
 var layoutbar2 = {
-    title: 'Top 5 game on North America',
+    title: 'Top 5 game on North America',x:1,y:9,
     font : {family:'Montserrat',size: 10}, 
-   
+
 };
 var layoutbar3 = {
     title: 'Top 5 game on Europe',
