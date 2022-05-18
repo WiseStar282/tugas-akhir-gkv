@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> contoh plot line chart </title>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        
+    </head>
+<body>
+    <div id="barplot"></div>
+    <div id="barplot0"></div>
+    <div id="barplot1"></div>
+    <div id="pieplot"></div>
+    <div id="pieplot0"></div>
+    <script>
+        //elemen div dengan id test, container elemen html
+        BAR1 = document.getElementById('barplot');
+        //data pada plot untuk absis-x dan ordinat-y
+        var databar1 = [{
+            
+            x: [0, 10, 20, 30, 40, 50],
+            y: ['isti', 'itu', 'asu', 'babi','ikan','babi'],
+            type: 'bar', orientation: 'h', name: 'abin bacot'
+        }];
+
+        BAR2 = document.getElementById('barplot0');
+        //data pada plot untuk absis-x dan ordinat-y
+        var databar2 = [{
+            x: [10, 20, 30, 50],
+            y: ['abin', 'ariq', 'asu', 'babi'],
+            type: 'bar', orientation: 'h', showlegend:true
+        }];
+
+        BAR3 = document.getElementById('barplot1');
+        //data pada plot untuk absis-x dan ordinat-y
+        var databar3 = [{
+            x: [10, 30, 30, 40],
+            y: ['anjing', 'monyet', 'asu', 'babi'],
+            type: 'bar', orientation: 'h', showlegend:true
+        }];
+        //hash config untuk tambahan pengaturan chart
+        //jika responsive true maka chart akan merespon langsung nilai yang dimasukkan
+        //method untuk memanggil fungsi plot
+        
+        /*
+        PIE1 =  document.getElementById('pieplot');
+        var datapie1 = [{
+            labels: ['action','sports','shooter','role-playing','platform','misc','racing','fighting','simulation','other'],
+            values: [20, 14.1, 7.9, 9, 5.3, 10.5, 7.5, 5.1, 5.2, 15.4], //ubah jadi valuenya, jgn persentase
+            textposition: 'outside',
+            type:'pie',
+            hole: .5
+        }];
+
+        PIE2 =  document.getElementById('pieplot0');
+        var datapie2 = [{
+            labels: ['PS2', 'X360', 'PS3', 'Wii', 'DS', 'PS', 'GBA', 'PSP', 'PS4', 'others'],
+            values: [13, 7.6, 8, 8, 13, 7.2, 5, 7.3, 2, 28.8], //ubah jadi valuenya, jgn persentase
+            textposition: 'outside',
+            type:'pie',
+            hole: .5
+        }];
+        */
+        
+        PIE =  document.getElementById('pieplot');
+        var datapie = [{
+            labels: ['action','sports','shooter','role-playing','platform','misc','racing','fighting','simulation','other'],
+            values: [20, 14.1, 7.9, 9, 5.3, 10.5, 7.5, 5.1, 5.2, 15.4], //ubah jadi valuenya, jgn persentase
+            textposition: 'outside',
+            domain: {column: 0},
+            name: 'Genre',
+            type:'pie',
+            hole: .5
+        },{
+            labels: ['PS2', 'X360', 'PS3', 'Wii', 'DS', 'PS', 'GBA', 'PSP', 'PS4', 'others'],
+            values: [13, 7.6, 8, 8, 13, 7.2, 5, 7.3, 2, 28.8], //ubah jadi valuenya, jgn persentase
+            textposition: 'outside',
+            domain: {column: 1},
+            name: 'Platform',
+            type:'pie',
+            hole: .5
+        }];
+        
+        //LAYOUT
+        /*
+        var layoutpie1 = {
+            font : {size: 18}, 
+            height:400, 
+            width:600
+        };
+
+        var layoutpie2 = {
+            font : {size: 18}, 
+            height:400, 
+            width:600
+        };
+        */
+ 
+        var layoutpie = {
+  title: 'Pie chart',
+  annotations: [
+    {
+      font: {
+        size: 20
+      },
+      showarrow: false,
+      text: 'Genre',
+      x: 0.2,
+      y: 0.5,
+      showlegend: true,
+    },
+    {
+      font: {
+        size: 20
+      },
+      showarrow: false,
+      text: 'Platform',
+      x: 0.82,
+      y: 0.5,
+      showlegend: true,
+    }
+  ],
+  height: 400,
+  width: 1000,
+  grid: {rows: 1, columns: 2}
+};
+
+        var layoutbar1 = {
+            font : {size: 18}, 
+            height:400, 
+            width:500
+        };
+
+        var layoutbar2 = {
+            font : {size: 18}, 
+            height:400, 
+            width:500
+        };
+
+        var layoutbar3 = {
+            font : {size: 18}, 
+            height:400, 
+            width:500
+        };
+
+        var config = { responsive: true };
+
+        //PIE CHART
+        //Plotly.newPlot(PIE1, datapie1, layoutpie1, config);
+        //Plotly.newPlot(PIE2, datapie2, layoutpie2, config);
+        Plotly.newPlot(PIE, datapie, layoutpie);
+        Plotly.newPlot(PIE, datapie, layoutpie);
+        
+        //BAR CHART
+        Plotly.newPlot(BAR1, databar1, layoutbar1, config);
+        Plotly.newPlot(BAR2, databar2, layoutbar2, config);
+        Plotly.newPlot(BAR3, databar3, layoutbar3, config);
+
+    </script>
+    
+</body>
+</html>
