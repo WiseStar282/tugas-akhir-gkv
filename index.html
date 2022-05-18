@@ -7,32 +7,70 @@
     </head>
 <body>
     <div id="barplot"></div>
+    <div id="barplot0"></div>
+    <div id="barplot1"></div>
     <div id="pieplot"></div>
+    <div id="pieplot0"></div>
     <script>
         //elemen div dengan id test, container elemen html
-        BAR = document.getElementById('barplot');
+        BAR1 = document.getElementById('barplot');
         //data pada plot untuk absis-x dan ordinat-y
-        var data = [{
-            x: ['isti', 'itu', 'asu', 'babi','ikan','babi'],
-            y: [0, 10, 20, 30, 40, 50],
-            type: 'bar', orientation: 'v', showlegend:true
+        var databar1 = [{
+            
+            x: [0, 10, 20, 30, 40, 50],
+            y: ['isti', 'itu', 'asu', 'babi','ikan','babi'],
+            type: 'bar', orientation: 'h', showlegend:true
+        }];
+
+        BAR2 = document.getElementById('barplot0');
+        //data pada plot untuk absis-x dan ordinat-y
+        var databar2 = [{
+            x: [10, 20, 30, 50],
+            y: ['abin', 'ariq', 'asu', 'babi'],
+            type: 'bar', orientation: 'h', showlegend:true
+        }];
+
+        BAR3 = document.getElementById('barplot1');
+        //data pada plot untuk absis-x dan ordinat-y
+        var databar3 = [{
+            x: [10, 30, 30, 40],
+            y: ['anjing', 'monyet', 'asu', 'babi'],
+            type: 'bar', orientation: 'h', showlegend:true
         }];
         //hash config untuk tambahan pengaturan chart
         //jika responsive true maka chart akan merespon langsung nilai yang dimasukkan
         //method untuk memanggil fungsi plot
         
-        PIE =  document.getElementById('pieplot');
-        var data1 = [{
-            labels: ['isti','babi','ikan','babi'],
+        PIE1 =  document.getElementById('pieplot');
+        var datapie1 = [{
+            labels: ['aini','babi','ikan','babi'],
+            y: [10, 20, 30, 40],
+            type:'pie'
+        }];
+
+        PIE2 =  document.getElementById('pieplot0');
+        var datapie2 = [{
+            labels: ['aini','babi','ikan','babi'],
             y: [10, 20, 30, 40],
             type:'pie'
         }];
         
-        var layout1 = {font : {size: 18}, height:400, width:500};
-        var layout = {font : {size: 18}};
+        var layoutpie1 = {font : {size: 18}, height:400, width:500};
+        var layoutpie2 = {font : {size: 18}, height:400, width:500};
+
+        var layoutbar1 = {font : {size: 18}, height:400, width:500};
+        var layoutbar2 = {font : {size: 18}, height:400, width:500};
+        var layoutbar3 = {font : {size: 18}, height:400, width:500};
         var config =  { responsive: true};
-        Plotly.newPlot(PIE, data1, layout1, config);
-        Plotly.newPlot(BAR, data, layout, config);
+
+        //PIE CHART
+        Plotly.newPlot(PIE1, datapie1, layoutpie1, config);
+        Plotly.newPlot(PIE2, datapie2, layoutpie2, config);
+        
+        //BAR CHART
+        Plotly.newPlot(BAR1, databar1, layoutbar1, config);
+        Plotly.newPlot(BAR2, databar2, layoutbar2, config);
+        Plotly.newPlot(BAR3, databar3, layoutbar3, config);
 
     </script>
     
