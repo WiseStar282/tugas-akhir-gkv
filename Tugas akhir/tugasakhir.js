@@ -5,6 +5,7 @@ const settings = {
 };
 const sketch = () => {
     return ({ context, width, height }) => {
+
        //ngasih foto sebagai bg
         img = new Image();
         img.src = 'bekron.png';
@@ -31,28 +32,30 @@ const sketch = () => {
             context.save();
             context.translate(0, height);
             context.scale(1, -1); 
-            context.font = "40px Courier New";
+            context.font = "40px poppins";
             context.textAlign = "center";
             context.fillStyle = "black";
             context.fillText("Video Game Sales",width/2, height/15);
             context.restore(); 
+
         //Membuat Grid bar chart
         function graph(){
             context.strokeStyle = 'Black';
             context.lineWidth = 2;
             //Buat bikin grafik X
             context.beginPath();
-            context.moveTo(48, 48);
-            context.lineTo(650, 48);
+            context.moveTo(80, 48);
+            context.lineTo(580, 48);
             context.stroke();
             context.closePath();
             //buat bikin grafik Y
             context.beginPath();
-            context.moveTo(48, 48);
-            context.lineTo(48, 400);
+            context.moveTo(80, 48);
+            context.lineTo(80, 380);
             context.stroke();
             context.closePath();
         }
+        
         function graphLine(){
             //vertical
             for(var i = 1; i < 6; i++){
@@ -76,7 +79,8 @@ const sketch = () => {
             }
         }   
         //graphLine();
-        //graph();
+        graph();
+        
 /////////////////////////////////////////////////////////////////////
         //PIE CHART
         //title pie
@@ -85,7 +89,7 @@ const sketch = () => {
             context.scale(1,-1);
             context.font = "30px Arial";
             context.fillStyle = "black";
-            context.fillText("Sales by Genre", width-400, height-600);
+            context.fillText("Sales by Genre", 630, 270);
             context.restore();
         var data = [
             ["Action", 10,"#75ecfa"], //biru
@@ -116,6 +120,7 @@ const sketch = () => {
           for(var i = 0; i < data.length; i++) {
             angles[i] = Math.PI * 2 * values[i];
           }
+
           //membuat pie chart
           for(var i = 0; i < data.length; i++){
                 context.save();
@@ -126,8 +131,8 @@ const sketch = () => {
                 context.beginPath();
                 // context.strokeStyle = 'black';
                 // context.lineWidth = 0;
-                context.moveTo(width / 6, height -590);
-                context.arc(width / 6, height-600 , 125, beginAngle, endAngle);
+                context.moveTo(270, 250); //nentuin centre piechart
+                context.arc(270, 250, 150, beginAngle, endAngle);
                 context.fillStyle = data[i][2];
                 context.closePath();
                 //context.stroke();
@@ -142,14 +147,14 @@ const sketch = () => {
                 context.scale(1,-1);
                 context.font = "15px Arial";
                 context.fillStyle = "black";
-                context.fillText(data[i][0], (width / 3)+20, (height / 4) - 100 + (i * 31));
+                context.fillText(data[i][0], (width / 3)+150, (height / 4) - 60 + (i * 31));
                 context.restore();
             //circle legend
                 context.save();
                 context.translate(0, height);
                 context.scale(1,-1);
                 context.beginPath();
-                context.arc((width / 3), (height / 8)  + (i * 30), 10, 0, 360);
+                context.arc((width / 3)+135, (height / 4)-60  + (i * 30), 10, 0, 360);
                 context.fillStyle = data[i][2];
                 context.closePath();
                 context.fill();
@@ -158,8 +163,8 @@ const sketch = () => {
                 context.save();
                 context.translate(0, width);
                 context.scale(1,-1);
-                var pointX = width + (100-5) * Math.cos(start_angle + angles[i]/2)-840;
-                var pointY = height + (100-10) * Math.sin(start_angle + angles[i]/2)-400;
+                var pointX = width + (120) * Math.cos(start_angle + angles[i]/2)-740;
+                var pointY = height + (120) * Math.sin(start_angle + angles[i]/2)-340;
                 var Ttext = Math.round(100 * values[i]);
                 context.fillStyle = "black";
                 context.font = "15px Arial";
@@ -176,22 +181,23 @@ const sketch = () => {
             //judul chart
             context.font = "30px Arial";
             context.fillStyle = "black";
-            context.fillText("Top 5 Game in Japan", width-400, height-320);
+            context.fillText("Top 5 Game", 630, 600);
+            context.fillText("in North America", 630, 635);
                 //label x
-                context.font = "25px Arial";
+                context.font = "20px Arial";
                 context.fillStyle = "black";
-                context.fillText("Sales(in Millions)", width/4+20, height-55);
+                context.fillText("Sales (in millions)", 600, height-45);
             //context.fillText("JP_Sales", width/4+10, height/2+35);
             //skala label x
             context.font = "20px Arial";
             context.fillStyle = "black";
             for(i=0; i<=5; i++){
-                context.fillText(0+i,(95*i)+60,780);
+                context.fillText(0+i*10,(95*i)+77,780);
             }
             context.restore();
            
         //membuat bar chart
-        var data = [[100,20,'Pokemon'],[200,20,'Pokemon Diamond'],[300,20,'Super Mario'],[400,20, 'Pepsimen'],[500,20,'Basara']];
+        var data = [[23.46, 20,'GTA V'],[26.17, 20,'Tetris'],[26.93, 20,'Duck Hunt'],[32.48, 20, 'Super Mario Bros'],[41.49,20,'Wii Sports']];
         for(let i=0; i <= 9; i++){
                 var x = data[i][0];
                 var centerX = (data[i][0])/width*-580; 
@@ -200,7 +206,7 @@ const sketch = () => {
         //membuat bar chart
             context.save(); 
             context.beginPath();
-            context.rect(48, (i*60)+65, x, 50);
+            context.rect(81, (i*60)+65, x*10, 50);
             context.fillStyle = "#ffb043";       
             context.fill();
             context.closePath();
@@ -211,14 +217,14 @@ const sketch = () => {
             context.scale(1,-1);
             context.font = '20px Arial';
             context.fillStyle = "#000000";
-            context.fillText(data[i][2], centerY+40,centerX+770);
+            context.fillText(data[i][2] + " (" + data[i][0] + ")", centerY+80, 720-61*i);
             context.font = '15px Arial';
             context.fillStyle = "gray";
             context.fillText("By:Kelompok 5", width/2+380, height-15);
             context.restore();
         
         }
-        
+
         
     };
 };
