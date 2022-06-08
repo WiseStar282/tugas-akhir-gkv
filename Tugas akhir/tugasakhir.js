@@ -10,18 +10,10 @@ const sketch = () => {
         img = new Image();
         img.src = 'bekron.png';
         context.fillStyle = 'white';
-        //context.fillRect(0, 0, width, height);
         context.drawImage(img, 0, 0, width, height);
         context.translate(0, height);
         context.scale(1, -1);
         
-        
-        //context.save();
-        //context.translate(0, height);
-        //context.scale(1, -1); 
-            //img.onload = () => context.drawImage(img, 0,0,width,height);
-        //context.restore(); 
-    
             //garis bingkai
             context.beginPath();
             context.strokeStyle = "#c2c2c2";
@@ -44,41 +36,17 @@ const sketch = () => {
             context.lineWidth = 2;
             //Buat bikin grafik X
             context.beginPath();
-            context.moveTo(80, 48);
-            context.lineTo(580, 48);
+            context.moveTo(80+369, 48);
+            context.lineTo(580+369, 48);
             context.stroke();
             context.closePath();
             //buat bikin grafik Y
             context.beginPath();
-            context.moveTo(80, 48);
-            context.lineTo(80, 380);
+            context.moveTo(449, 48);
+            context.lineTo(449, 380);
             context.stroke();
             context.closePath();
         }
-        
-        function graphLine(){
-            //vertical
-            for(var i = 1; i < 6; i++){
-                context.strokeStyle = 'gray';
-                context.lineWidth = 1;
-                context.beginPath();
-                context.moveTo(50, 50+(i*65));
-                context.lineTo(650, 50+(i*65));
-                context.stroke();
-                context.closePath();
-            }
-            //horizontal
-            for(var i = 1; i < 7; i++){
-                context.strokeStyle = 'gray';
-                context.lineWidth = 1;
-                context.beginPath();
-                context.moveTo(50+(i*99), 49);
-                context.lineTo(50+(i*99), 400);
-                context.stroke();
-                context.closePath();
-            }
-        }   
-        //graphLine();
         graph();
         
 /////////////////////////////////////////////////////////////////////
@@ -89,16 +57,16 @@ const sketch = () => {
             context.scale(1,-1);
             context.font = "30px Arial";
             context.fillStyle = "black";
-            context.fillText("Sales by Genre", 630, 270);
+            context.fillText("Sales by Genre", 580, 270);
             context.restore();
         var data = [
             ["Action", 10,"#75ecfa"], //biru
-            ["Sports", 45,"#3a80f8"], //birutua
-            ["Shooter", 8,"#f7299f"], //pink
+            ["Sports", 20,"#3a80f8"], //birutua
+            ["Shooter", 14,"#f7299f"], //pink
             ["Role-Playing", 19,"#f8bd3a"], //oren
-            ["Platform", 12,"#f7e919"],  //kuning
+            ["Platform", 13,"#f7e919"],  //kuning
             ["Misc", 8,"#4af85f"],      //hijau
-            ["Racing", 11,"#e509ee"],   //ungu
+            ["Racing", 15,"#e509ee"],   //ungu
             ["Fighting", 10,"#fa9e72"], //peach
             ["Simulation", 20,"#f74524"],//red
           ];
@@ -120,7 +88,6 @@ const sketch = () => {
           for(var i = 0; i < data.length; i++) {
             angles[i] = Math.PI * 2 * values[i];
           }
-
           //membuat pie chart
           for(var i = 0; i < data.length; i++){
                 context.save();
@@ -129,10 +96,8 @@ const sketch = () => {
                 context.translate(0, height);
                 context.scale(1,-1);
                 context.beginPath();
-                // context.strokeStyle = 'black';
-                // context.lineWidth = 0;
-                context.moveTo(270, 250); //nentuin centre piechart
-                context.arc(270, 250, 150, beginAngle, endAngle);
+                context.moveTo(200, 250); //nentuin centre piechart
+                context.arc(200, 250, 150, beginAngle, endAngle);
                 context.fillStyle = data[i][2];
                 context.closePath();
                 //context.stroke();
@@ -147,14 +112,14 @@ const sketch = () => {
                 context.scale(1,-1);
                 context.font = "15px Arial";
                 context.fillStyle = "black";
-                context.fillText(data[i][0], (width / 3)+150, (height / 4) - 60 + (i * 31));
+                context.fillText(data[i][0], (width / 3)+115, (height / 4) - 53 + (i * 30));
                 context.restore();
             //circle legend
                 context.save();
                 context.translate(0, height);
                 context.scale(1,-1);
                 context.beginPath();
-                context.arc((width / 3)+135, (height / 4)-60  + (i * 30), 10, 0, 360);
+                context.arc((width / 3)+100, (height / 4)-60  + (i * 30), 10, 0, 360);
                 context.fillStyle = data[i][2];
                 context.closePath();
                 context.fill();
@@ -163,8 +128,8 @@ const sketch = () => {
                 context.save();
                 context.translate(0, width);
                 context.scale(1,-1);
-                var pointX = width + (120) * Math.cos(start_angle + angles[i]/2)-740;
-                var pointY = height + (120) * Math.sin(start_angle + angles[i]/2)-340;
+                var pointX = width + (115) * Math.cos(start_angle + angles[i]/2)-810;
+                var pointY = height + (115) * Math.sin(start_angle + angles[i]/2)-340;
                 var Ttext = Math.round(100 * values[i]);
                 context.fillStyle = "black";
                 context.font = "15px Arial";
@@ -181,18 +146,18 @@ const sketch = () => {
             //judul chart
             context.font = "30px Arial";
             context.fillStyle = "black";
-            context.fillText("Top 5 Game", 630, 600);
-            context.fillText("in North America", 630, 635);
+            context.fillText("Top 5 Game", 210, 580);
+            context.fillText("in North America", 180, 610);
                 //label x
                 context.font = "20px Arial";
                 context.fillStyle = "black";
-                context.fillText("Sales (in millions)", 600, height-45);
+                context.fillText("Sales (in millions)", 800, height-50);
             //context.fillText("JP_Sales", width/4+10, height/2+35);
             //skala label x
             context.font = "20px Arial";
             context.fillStyle = "black";
             for(i=0; i<=5; i++){
-                context.fillText(0+i*10,(95*i)+77,780);
+                context.fillText(0+i*10,(95*i)+450,780);
             }
             context.restore();
            
@@ -200,27 +165,27 @@ const sketch = () => {
         var data = [[23.46, 20,'GTA V'],[26.17, 20,'Tetris'],[26.93, 20,'Duck Hunt'],[32.48, 20, 'Super Mario Bros'],[41.49,20,'Wii Sports']];
         for(let i=0; i <= 9; i++){
                 var x = data[i][0];
-                var centerX = (data[i][0])/width*-580; 
+                //var centerX = (data[i][0])/width*-580; 
                 var centerY = 20;
                 
         //membuat bar chart
             context.save(); 
             context.beginPath();
-            context.rect(81, (i*60)+65, x*10, 50);
+            context.rect(450, (i*60)+65, x*10, 50);
             context.fillStyle = "#ffb043";       
             context.fill();
             context.closePath();
             context.restore();
-        //memberi nama bar chart
+        //memberi nama game pada bar chart
             context.save(); 
             context.translate(0, height);
             context.scale(1,-1);
             context.font = '20px Arial';
             context.fillStyle = "#000000";
-            context.fillText(data[i][2] + " (" + data[i][0] + ")", centerY+80, 720-61*i);
+            context.fillText(data[i][2] + " (" + data[i][0] + ")", centerY*23, 720-61*i);
             context.font = '15px Arial';
             context.fillStyle = "gray";
-            context.fillText("By:Kelompok 5", width/2+380, height-15);
+            context.fillText("By:Kelompok 5", width/20-35, height-15);
             context.restore();
         
         }
